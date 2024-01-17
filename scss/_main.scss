@@ -1,8 +1,7 @@
 main {
   flex-grow: 1;
   position: relative;
-  margin-bottom: $footer-height;
-  margin: 1em;
+  margin: 1em 1em $footer-height 1em;
   padding: 0 10px;
   border-radius: 50px;
   background-color: var(--bg-main);
@@ -53,7 +52,7 @@ form {
 }
 
 input {
-  width: 6em;
+  width: 100%;
   padding: .25 .5em;
 
   border: {
@@ -64,7 +63,7 @@ input {
   }
   color: var(--text);
   text-align: center;
-  font-size: 2em;
+  font-size: var(--main-font-size);
 
   &:focus {
     border-color: var(--text-a);
@@ -90,7 +89,7 @@ button {
     size: 0em;
     radius: .5em;
   }
-  font-size: 2em;
+  font-size: var(--main-font-size);
   background-color: var(--bg-button);
   color: var(--text);
   font-weight: 900;
@@ -144,7 +143,7 @@ button {
 }
 
 .result {
-  font-size: 2em;
+  font-size: var(--main-font-size);
 }
 
 .close {

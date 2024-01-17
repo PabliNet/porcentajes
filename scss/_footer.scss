@@ -12,7 +12,12 @@ footer {
 }
 
 .logo {
+  position: absolute;
+  top: 50%;
+  left: 1em;
   width: $icon-width;
   aspect-ratio: 1;
   cursor: pointer;
+
+  transform: translateY(-50%);
 }

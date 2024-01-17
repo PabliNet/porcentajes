@@ -1,4 +1,9 @@
-$footer-height: 50px;
+$footer-height: 5em;
 $icon-width: 45px;
 $header-height: 100px;
+$main-font-size: 2em;
 $menu-width: 250px;
+
+:root {
+  --main-font-size: #{$main-font-size};
+}

@@ -72,6 +72,10 @@ export const clic = e => {
 
   if (e.target.classList.contains('logo-colors')) {
     document.querySelector('nav').classList.toggle('menu-show')
+  } else if (e.target.tagName.toLowerCase() != 'a') {
+    if (document.querySelector('nav').classList.contains('menu-show')) {
+      document.querySelector('nav').classList.remove('menu-show')
+    }
   }
 },
 //
