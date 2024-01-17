@@ -1,0 +1,19 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50 100 100" class="back">
+
+  <defs>
+    <style>
+      .logo {
+        fill: var(--logo-fill, #FFF);
+        stroke: var(--logo-stroke, #000);
+      }
+      .arrow {
+        fill: var(--logo-stroke, #000);
+      }
+    </style>
+  </defs>
+
+  <circle cx="0" cy="0" r="45" stroke-width="10" class="logo" />
+  <path d="M-25 15 H20 a-5 5 0 1 0 0 -32 h-30 v-10 l-15 10 l15 10 v-10" class="logo" stroke-width="5" stroke-linecap="round" />
+  <path d="M-25 -17 l15 -10 v20z" stroke-width="0" class="arrow" />
+
+</svg>

@@ -1,0 +1,31 @@
+@mixin mq ($value, $condition:min-width) {
+  $breakpoints: (
+    small: 320px,
+    medium: 640px,
+    large: 1024px
+  );
+  @if index([min-width, max-width, min-height, max-height, prefers-color-scheme], $condition) {
+    @if map-has-key($breakpoints, $value) {
+      @media screen and (#{$condition}:map-get($breakpoints, $value)) {
+        @content;
+      }
+    } @else if type-of($value) == number and (unit($value) == 'px' or unit($value) == 'rem') {
+      @media screen and (#{$condition}:$value) {
+        @content;
+      }
+    } @else if ($value == portrait or $value landscape) and $condition == orientation {
+      @media screen and (orientation:$value) {
+        @content;
+      }
+    }
+      @else if $value == light or $value == dark or $condition == prefers-color-scheme {
+      @media screen and (prefers-color-scheme:$value) {
+        @content;
+      }
+    } @else {
+      @media screen and (#{$condition}:$value) {
+        @content;
+      }
+    }
+  }
+}

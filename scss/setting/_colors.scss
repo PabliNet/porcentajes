@@ -1,0 +1,56 @@
+$bg: aquamarine;
+$bg-button: mediumaquamarine;
+$bg-button-hover: $bg;
+
+$logo-fill: $bg;
+$logo-stroke: darken($bg, 40%);
+
+$text: black;
+$text-a: darkgreen;
+$text-a-hover: teal;
+$text-button: #{darken($bg, 40%)};
+$text-header: #{darken($bg, 40%)};
+
+:root {
+  --bg: #{$bg};
+  --bg-main: #{lighten($bg, 12%)};
+  --bg-button: #{$bg-button};
+  --bg-button-hover: #{$bg-button-hover};
+  --bg-button-active: ;
+  --bg-menu-a: ;
+  --bg-menu-a-hover: ;
+  --bg-nav: #{$bg};
+
+  --logo-fill: #{$bg};
+  --logo-stroke: #{$logo-stroke};
+
+  --text: #{$text};
+  --text-a: #{$text-a};
+  --text-a-hover: #{$text-a-hover};
+  --text-button: #{$text-button};
+  --text-button-hover: black;
+  --text-header: #{$text-header};
+
+  @include mq(dark, prefers-color-scheme) {
+/*
+    --bg: ;
+    --bg-main: ;
+    --bg-button: ;
+    --bg-button-hover: ;
+    --bg-button-active: ;
+    --bg-menu-a: ;
+    --bg-menu-a-hover: ;
+    --bg-nav: ;
+
+    --logo-fill: green;
+    --logo-stroke: white;
+  
+    --text: ;
+    --text-a: ;
+    --text-a-hover: ;
+    --text-button: ;
+    --text-button-hover: ;
+    --text-header: ;
+    //*/
+  }
+}

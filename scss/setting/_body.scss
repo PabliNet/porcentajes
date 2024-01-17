@@ -1,0 +1,22 @@
+:root {
+  min-height: 100%;
+  background-color: var(--bg);
+  font: {
+    family: Roboto, sans-serif;
+    size: 10px;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  max-width: 1024px;
+  min-height: 100vh;
+  margin: 0 auto;
+  font-size: 1.6em;
+  background-color: inherit;
+}

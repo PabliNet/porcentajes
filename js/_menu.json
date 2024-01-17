@@ -1,0 +1,37 @@
+[
+  {
+    "href": "percent.html",
+    "name": "Porcentaje de un total",
+    "description": "Calcula el porcentaje de un número"
+  },
+  {
+    "href": "quantity.html",
+    "name": "Cantidad según porcentaje",
+    "description": "Calcula la cantidad según el porcentaje"
+  },
+  {
+    "href": "add-percent.html",
+    "name": "Sumar porcentaje",
+    "description": "Suma el porcentaje agregado"
+  },
+  {
+    "href": "subtract-percent.html",
+    "name": "Restar porcentaje",
+    "description": "Resta un porcentaje"
+  },
+  {
+    "href": "subtract-added-percent.html",
+    "name": "Restar porcentaje agregado",
+    "description": "Resta el porcentaje agregado"
+  },
+  {
+    "href": "increased-percent.html",
+    "name": "Porcentaje agregado",
+    "description": "Calcula el porcentaje agregado"
+  },
+  {
+    "href": "total.html",
+    "name": "Total",
+    "description": "Calcula el 100% según el porcentaje y el número"
+  }
+]

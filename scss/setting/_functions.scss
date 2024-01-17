@@ -1,0 +1,10 @@
+@function transitions ($time, $propertys...) {
+  $time: $time * 1s;
+  $aux: #{nth($propertys, 1) $time linear} ;
+  @each $property in $propertys {
+      @if index($propertys, $property) > 1 {
+        $aux: append($aux, $property $time linear, comma)
+      }
+  }
+  @return $aux;
+}

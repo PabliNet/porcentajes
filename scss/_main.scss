@@ -1,0 +1,159 @@
+main {
+  flex-grow: 1;
+  position: relative;
+  margin-bottom: $footer-height;
+  margin: 1em;
+  padding: 0 10px;
+  border-radius: 50px;
+  background-color: var(--bg-main);
+  color: var(--text);
+
+  a {
+    position: relative;
+    margin: 0 auto;
+    color: var(--text-a);
+    font-weight: 500;
+
+    transition: color .3s linear;
+
+    &:hover {
+      --text-a: var(--text-a-hover);
+
+      &::after {
+        left: 0;
+        width: 100%;
+      }
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background-color: var(--text-a);
+
+      transition: transitions(.3, left, width, background-color);
+    }
+  }
+}
+
+h2 {
+  text-align: center;
+}
+
+form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+input {
+  width: 6em;
+  padding: .25 .5em;
+
+  border: {
+    style: solid;
+    size: 3em;
+    color: var(--bg);
+    radius: .5em;
+  }
+  color: var(--text);
+  text-align: center;
+  font-size: 2em;
+
+  &:focus {
+    border-color: var(--text-a);
+    color: var(--text-a);
+
+    & + label {
+      color: var(--text-a);
+    }
+  }
+}
+
+label {
+  font-size: 2em;
+}
+
+button {
+  position: relative;
+  margin: .5em 0 0;
+  width: 5em;
+  height: 2em;
+  border: {
+    style: none;
+    size: 0em;
+    radius: .5em;
+  }
+  font-size: 2em;
+  background-color: var(--bg-button);
+  color: var(--text);
+  font-weight: 900;
+  overflow: hidden;
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-button-hover);
+    clip-path: circle(var(--button-circle, 0%) at 50% 50%);
+    pointer-events: none;
+
+    transition: clip-path .3s linear;
+  }
+
+  &:hover {
+    --button-circle: 100%;
+    color: var(--text-button-hover);
+  }
+
+  &::after {
+    content: "Calcular";
+    position: relative;
+    z-index: 2;
+    color: var(--text-button-hover);
+    pointer-events: none;
+  }
+}
+
+.index {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+
+  p {
+    margin: .5em;
+  }
+}
+
+.row {
+  display: flex;
+  flex-direction: column-reverse;
+  padding-bottom: 1rem;
+}
+
+.result {
+  font-size: 2em;
+}
+
+.close {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  width: $icon-width;
+  &-color {
+    fill: var(--bg-main);
+    cursor: pointer;
+  }
+}

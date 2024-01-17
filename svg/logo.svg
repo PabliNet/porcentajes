@@ -1,0 +1,17 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50 100 100" class="logo">
+
+  <defs>
+    <style>
+      .logo {
+        fill: var(--logo-fill, #FFF);
+        stroke: var(--logo-stroke, #000);
+      }
+    </style>
+  </defs>
+
+  <circle cx="0" cy="0" r="45" stroke-width="10" class="logo-colors" />
+  <circle cx="-15" cy="-15" r="10" stroke-width="5" class="logo-colors" />
+  <line x1="20" y1="-20" x2="-20" y2="20" stroke-width="5" class="logo-colors" />
+  <circle cx="15" cy="15" r="10" stroke-width="5" class="logo-colors" />
+
+</svg>

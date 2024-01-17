@@ -1,0 +1,18 @@
+footer {
+  position: fixed;
+  bottom: 0;
+  z-index: 100;
+  width: 100%;
+  height: $footer-height;
+  background-color: var(--bg);
+
+  div:nth-child(2) {
+    text-align: center;
+  }
+}
+
+.logo {
+  width: $icon-width;
+  aspect-ratio: 1;
+  cursor: pointer;
+}
