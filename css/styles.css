@@ -5,50 +5,51 @@ a {
 }
 
 :root {
-  --main-font-size: 2em;
+  --main-font-size: 5em;
 }
 
 :root {
-  --bg: aquamarine;
-  --bg-main: #bcffe9;
-  --bg-button: mediumaquamarine;
-  --bg-button-hover: aquamarine;
-  --bg-button-active: ;
-  --bg-menu-a: ;
-  --bg-menu-a-hover: ;
-  --bg-nav: aquamarine;
-  --logo-fill: aquamarine;
-  --logo-stroke: #00b276;
-  --text: black;
-  --text-a: darkgreen;
-  --text-a-hover: teal;
-  --text-button: #00b276;
-  --text-button-hover: black;
-  --text-header: #00b276;
+  --bg: hsl(160, 100%, 75%) ;
+  --bg-button: hsl(160, 100%, 75%) ;
+  --bg-button-hover: #65cdaa ;
+  --bg-checked: white ;
+  --bg-input: transparent ;
+  --bg-form: #bdffe9 ;
+  --bg-nav: #00ffaa ;
+  --bg-nav-a-hover: #99ffdd ;
+  --border-input: #3ec195 ;
+  --logo-stroke: #00b377 ;
+  --logo-stroke-hover: #008055 ;
+  --text: dimgray ;
+  --text-a: #25745a ;
+  --text-a-hover: #25745a ;
+  --text-checked: #00e699 ;
+  --text-input-hover: black ;
+  --text-button: #00b377 ;
+  --text-button-hover: #00b377 ;
+  --text-header: #00b377 ;
 }
-
 @media screen and (prefers-color-scheme: dark) {
   :root {
-    /*
-    --bg: ;
-    --bg-main: ;
-    --bg-button: ;
-    --bg-button-hover: ;
-    --bg-button-active: ;
-    --bg-menu-a: ;
-    --bg-menu-a-hover: ;
-    --bg-nav: ;
-
-    --logo-fill: green;
-    --logo-stroke: white;
-  
-    --text: ;
-    --text-a: ;
-    --text-a-hover: ;
-    --text-button: ;
-    --text-button-hover: ;
-    --text-header: ;
-    //*/
+    --bg: black ;
+    --bg-button: hsl(160, 100%, 75%) ;
+    --bg-button-hover: #65cdaa ;
+    --bg-checked: hsl(160, 100%, 75%) ;
+    --bg-input: rgba(128, 255, 213, 0.4) ;
+    --bg-form: black ;
+    --bg-nav: #003322 ;
+    --bg-nav-a-hover: white ;
+    --border-input: #3ec195 ;
+    --logo-stroke: #00b377 ;
+    --logo-stroke-hover: #008055 ;
+    --text: lightgray ;
+    --text-a: white ;
+    --text-a-hover: black ;
+    --text-checked: #008055 ;
+    --text-input-hover: white ;
+    --text-button: #00b377 ;
+    --text-button-hover: #00b377 ;
+    --text-header: #00b377 ;
   }
 }
 
@@ -74,29 +75,26 @@ body {
 }
 
 input {
+  background-color: transparent;
   outline: none;
 }
-
-input[type="number"] {
+input[type=radio] {
+  display: none;
+}
+input[type=number] {
   -moz-appearance: textfield;
 }
-
-input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+input[type=number]::-webkit-outer-spin-button, input[type=number]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-header {
-  display: flex;
-  align-items: center;
-  height: 100px;
-  background-color: var(--bg);
-  color: var(--text-header);
-}
-
 h1 {
   margin: 0 auto;
+  line-height: 1.2;
   text-align: center;
+  color: var(--text-header);
+  font-size: var(--h1-font-size);
 }
 
 nav {
@@ -104,58 +102,59 @@ nav {
   bottom: 5em;
   z-index: 2;
   width: 250px;
-  padding: .5em 0;
+  line-height: 1.5em;
   border-radius: 0 50px 0 0;
   overflow: hidden;
   background-color: var(--bg-nav);
   transform: translateY(100%);
   transition: transform 0.1s linear;
 }
-
 nav.menu-show {
   transform: translateY(0);
 }
-
-nav a {
+nav label {
   display: block;
-  padding-left: .5em;
+  padding-left: 0.5em;
   line-height: 1.5;
+  font-size: 1em;
   font-weight: 700;
+  color: var(--text-a);
+  cursor: pointer;
   transition: background-color 0.3s linear, padding-left 0.3s linear;
 }
-
-nav a:hover {
-  background-color: lime;
+nav label:hover {
+  background-color: var(--bg-nav-a-hover);
   padding-left: 2em;
+}
+nav input[type=radio]:checked + label {
+  background-color: var(--bg-checked);
+  color: var(--text-checked);
 }
 
 main {
+  --h1-font-size: 1.5em;
+  --main-font-size: 1em;
+  display: flex;
+  align-items: center;
   flex-grow: 1;
   position: relative;
-  margin: 1em 1em 5em 1em;
-  padding: 0 10px;
-  border-radius: 50px;
-  background-color: var(--bg-main);
+  margin-bottom: 5em;
   color: var(--text);
 }
-
 main a {
   position: relative;
   margin: 0 auto;
   color: var(--text-a);
   font-weight: 500;
-  transition: color .3s linear;
+  transition: color 0.2s linear;
 }
-
 main a:hover {
   --text-a: var(--text-a-hover);
 }
-
 main a:hover::after {
   left: 0;
   width: 100%;
 }
-
 main a::after {
   content: "";
   display: block;
@@ -163,64 +162,124 @@ main a::after {
   left: 50%;
   bottom: 0;
   width: 0;
-  height: 1px;
+  height: 3px;
   background-color: var(--text-a);
-  transition: left 0.3s linear, width 0.3s linear, background-color 0.3s linear;
+  transition: left 0.2s linear, width 0.2s linear, background-color 0.2s linear;
+}
+@media screen and (min-width: 800px) and (min-height: 600px) {
+  main {
+    --h1-font-size: 2em;
+    --main-font-size: 1.8em;
+  }
 }
 
 h2 {
   text-align: center;
+  width: 80%;
+  margin: 0 auto;
 }
-
-form {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  text-align: center;
-  transform: translate(-50%, -50%);
+@media screen and (min-width: 800px) and (min-height: 600px) {
+  h2 {
+    width: 100%;
+    font-size: 5em;
+  }
 }
 
 input {
   width: 100%;
-  padding: .25 .5em;
+  padding: 0.25 0.5em;
   border-style: solid;
-  border-size: 3em;
-  border-color: var(--bg);
-  border-radius: .5em;
-  color: var(--text);
+  border-width: 0.3em;
+  border-color: var(--border-input);
+  border-radius: 0.5em;
+  background-color: var(--bg-input);
+  color: var(--border-input);
   text-align: center;
   font-size: var(--main-font-size);
+  transition: border-color 0.3s linear, color 0.3s linear;
+}
+.form input:focus {
+  --border-input: var(--text-ainput-hover);
+  --text-input: var(--text-input);
+}
+.form input:focus + label {
+  color: var(--text-input-hover);
+  transition: color 0.3s linear;
 }
 
-input:focus {
-  border-color: var(--text-a);
-  color: var(--text-a);
+.form {
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1em;
+  border-radius: 50px;
+  background-color: var(--bg-form);
+  /*
+  --main-font-size: 2em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  //*/
 }
-
-input:focus + label {
-  color: var(--text-a);
+@media screen and (min-width: 600px) {
+  .form {
+    width: 50%;
+  }
 }
 
 label {
-  font-size: 2em;
+  font-size: var(--main-font-size);
+  font-weight: 500;
+  color: var(--border-input);
+}
+
+.row {
+  display: flex;
+  flex-direction: column-reverse;
+  padding-bottom: 1rem;
+}
+
+.result {
+  border: none;
+  font-family: monospace;
+  font-size: var(--main-font-size);
+  background-color: transparent;
+}
+
+.button-div {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: end;
+}
+
+.copy {
+  display: inline-block;
+  width: 48px;
+  aspect-ratio: 1;
+  padding: 5px;
+  z-index: 5;
+}
+@media screen and (min-width: 800px) and (min-height: 600px) {
+  .copy {
+    width: 62px;
+  }
 }
 
 button {
   position: relative;
-  margin: .5em 0 0;
   width: 5em;
   height: 2em;
   border-style: none;
   border-size: 0em;
-  border-radius: .5em;
-  font-size: var(--main-font-size);
+  border-radius: 0.5em;
+  font-size: var(--h1-font-size);
   background-color: var(--bg-button);
   color: var(--text);
   font-weight: 900;
   overflow: hidden;
   cursor: pointer;
 }
-
 button::before {
   content: "";
   display: block;
@@ -232,64 +291,55 @@ button::before {
   background-color: var(--bg-button-hover);
   clip-path: circle(var(--button-circle, 0%) at 50% 50%);
   pointer-events: none;
-  transition: clip-path .3s linear;
+  transition: clip-path 0.3s linear;
 }
-
 button:hover {
   --button-circle: 100%;
+}
+button:hover::after {
   color: var(--text-button-hover);
 }
-
 button::after {
   content: "Calcular";
   position: relative;
   z-index: 2;
-  color: var(--text-button-hover);
+  color: var(--text-button);
+  pointer-events: none;
+}
+button:nth-of-type(2)::after {
+  content: "Borrar";
+}
+
+.no-press {
+  filter: saturate(0) opacity(0.1);
   pointer-events: none;
 }
 
-.index {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-}
-
-.index p {
-  margin: .5em;
-}
-
-.row {
-  display: flex;
-  flex-direction: column-reverse;
-  padding-bottom: 1rem;
-}
-
-.result {
-  font-size: var(--main-font-size);
-}
-
-.close {
-  position: absolute;
-  top: 1em;
-  right: 1em;
-  width: 45px;
-}
-
-.close-color {
-  fill: var(--bg-main);
+.under {
   cursor: pointer;
+  transition: transform 0.1s linear;
+}
+.under-no {
+  pointer-events: none;
+}
+.under:hover {
+  stroke: var(--logo-stroke-hover);
+}
+.under:active {
+  transform: scale(0.99);
 }
 
 footer {
+  display: flex;
   position: fixed;
   bottom: 0;
+  left: 0;
   z-index: 100;
   width: 100%;
   height: 5em;
-  background-color: var(--bg);
+  margin-top: auto;
+  background-color: var(--bg-nav);
 }
-
 footer div:nth-child(2) {
   text-align: center;
 }

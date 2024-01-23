@@ -6,77 +6,89 @@ import subtractPercent from "/js/_subtract-percent.js"
 import subtractAddedPercent from "/js/_subtract-added-percent.js"
 import increasedPercent from "/js/_increased-percent.js"
 import total from "/js/_total.js"
+import copy from "/js/_copy.js"
 
 export const clic = e => {
-  e.preventDefault()
   if (e.target.tagName.toLowerCase() == 'a' && e.target.getAttribute('target') != '_blank') {
     e.preventDefault()
-    location.replace(e.target.getAttribute('href'))
   }
-  if (e.target.classList.contains('close-color')) {
-    location.replace('/')
-  }
-  calculations.forEach(el => {
-    if (e.target.id === el) {
-      const p = document.getElementById('n-percent') ? document.getElementById('n-percent').value : 0
-      const q = document.getElementById('n-quantity') ? document.getElementById('n-quantity').value : 0
-      const t = document.getElementById('n-total') ? document.getElementById('n-total').value : 0
-
-      let c = 0
-      document.querySelectorAll('INPUT').forEach (input => {
-        if (input.value == '') {
-          c++
-          if (!input.classList.contains('error')) {
-            input.classList.add('error')
+  if (e.target.tagName.toLowerCase() == 'button' && calculations.includes(e.target.id)) {
+    const input1 = document.getElementById('input-1') ? document.getElementById('input-1').value : undefined
+    const input2 = document.getElementById('input-2') ? document.getElementById('input-2').value : undefined
+    calculations.forEach(el => {
+      if (e.target.id === el) {
+        let c = 0
+        document.querySelectorAll('INPUT[type="number"]').forEach (input => {
+          if (input.value == '') {
+            c++
+            if (!input.classList.contains('err')) {
+              input.classList.add('err')
+            }
+          } else {
+            if (input.classList.contains('err')) {
+              input.classList.remove('err')
+            }
           }
-        } else {
-          if (input.classList.contains('error')) {
-            input.classList.remove('error')
-          }
-        }
-      })
-
-      let res
-      switch (e.target.id) {
-        case 'percent':
-          res = percent(q, t)
-        break
-
-        case 'quantity':
-          res = quantity(p, t)
-        break
-
-        case 'add-percent':
-          res = addPercent(p, t)
-        break
-
-        case 'subtract-percent':
-          res = subtractPercent(p, t)
-        break
-
-        case 'subtract-added-percent':
-          res = subtractAddedPercent(p, t)
-        break
-
-        case 'increased-percent':
-          res = increasedPercent(q, t)
-        break
-
-        case 'total':
-          res = total(p, q)
-        break
+        })
       }
-      document.getElementById('result-span').textContent = res
-  }
-  })
+    })
+    let res
+    switch (e.target.id) {
+      case 'percent':
+        res = `${percent(input1, input2)}%`
+      break
 
+      case 'quantity':
+        res = `${quantity(input1, input2)}`
+      break
+
+      case 'add-percent':
+        res = `${addPercent(input1, input2)}`
+      break
+
+      case 'subtract-percent':
+        res = `${subtractPercent(input2, input1)}`
+      break
+
+      case 'subtract-added-percent':
+        res = `${subtractAddedPercent(input2, input1)}`
+      break
+
+      case 'increased-percent':
+        res = `${increasedPercent(input2, input1)}%`
+      break
+
+      case 'total':
+        res = `${total(input2, input1)}`
+      break
+    }
+    if (input1.length !== 0 && input2.length !== 0) {
+    document.getElementById('result').value = res
+      if (document.getElementById('copy-span').classList.contains('no-press')) {
+        document.getElementById('copy-span').classList.remove('no-press')
+      }
+    }
+  }
   if (e.target.classList.contains('logo-colors')) {
     document.querySelector('nav').classList.toggle('menu-show')
-  } else if (e.target.tagName.toLowerCase() != 'a') {
+  } else if (!['a', 'label', 'input'].includes(e.target.tagName.toLowerCase())) {
     if (document.querySelector('nav').classList.contains('menu-show')) {
       document.querySelector('nav').classList.remove('menu-show')
     }
   }
+
+  if (e.target.id == 'remove') {
+    document.querySelectorAll('.form input').forEach(el => {
+      el.value = ''
+      if (el.classList.contains('err')) {
+        el.classList.remove('err')
+      }
+    })
+    if (!document.getElementById('copy-span').classList.contains('no-press')) {
+      document.getElementById('copy-span').classList.add('no-press')
+    }
+  }
+  copy(document.getElementById('result'))
 },
 //
 wheelScroll = e => {

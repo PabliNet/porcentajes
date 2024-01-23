@@ -3,15 +3,18 @@
   <defs>
     <style>
       .logo {
-        fill: var(--logo-fill, #FFF);
+        fill: transparent;
         stroke: var(--logo-stroke, #000);
       }
     </style>
+    <g id="logo">
+      <circle cx="0" cy="0" r="45" stroke-width="10" />
+      <circle cx="-15" cy="-15" r="10" stroke-width="5" />
+      <line x1="20" y1="-20" x2="-20" y2="20" stroke-width="5" />
+      <circle cx="15" cy="15" r="10" stroke-width="5" />
+    </g>
   </defs>
 
-  <circle cx="0" cy="0" r="45" stroke-width="10" class="logo-colors" />
-  <circle cx="-15" cy="-15" r="10" stroke-width="5" class="logo-colors" />
-  <line x1="20" y1="-20" x2="-20" y2="20" stroke-width="5" class="logo-colors" />
-  <circle cx="15" cy="15" r="10" stroke-width="5" class="logo-colors" />
+  <use href="#logo" x="0" y="0" class="logo-colors under" />
 
 </svg>

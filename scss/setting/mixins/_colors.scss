@@ -1,0 +1,5 @@
+@mixin colors ($map) {
+  @each $property, $value in $map {
+      --#{$property}: #{$value}
+  }
+}

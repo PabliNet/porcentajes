@@ -1,0 +1,74 @@
+button {
+  position: relative;
+  width: 5em;
+  height: 2em;
+  border: {
+    style: none;
+    size: 0em;
+    radius: .5em;
+  }
+  font-size: var(--h1-font-size);
+  background-color: var(--bg-button);
+  color: var(--text);
+  font-weight: 900;
+  overflow: hidden;
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-button-hover);
+    clip-path: circle(var(--button-circle, 0%) at 50% 50%);
+    pointer-events: none;
+
+    transition: clip-path $time linear;
+  }
+
+  &:hover {
+    --button-circle: 100%;
+
+    &::after {
+      color: var(--text-button-hover);
+    }
+  }
+
+  &::after {
+    content: "Calcular";
+    position: relative;
+    z-index: 2;
+    color: var(--text-button);
+    pointer-events: none;
+  }
+
+  &:nth-of-type(2)::after {
+    content: "Borrar";
+  }
+}
+
+.no-press {
+  filter: saturate(0) opacity(.1);
+  pointer-events: none;
+}
+
+.under {
+  cursor: pointer;
+
+  transition: transform .1s linear;
+
+  &-no {
+    pointer-events: none;
+  }
+
+  &:hover {
+    stroke: var(--logo-stroke-hover);
+  }
+
+  &:active {
+    transform: scale(.99);
+  }
+}

@@ -1,12 +1,7 @@
-header {
-  display: flex;
-  align-items: center;
-  height: $header-height;
-  background-color: var(--bg);
-  color: var(--text-header);
-}
-
 h1 {
   margin: 0 auto;
+  line-height: 1.2;
   text-align: center;
+  color: var(--text-header);
+  font-size: var(--h1-font-size);
 }

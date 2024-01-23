@@ -1,19 +1,22 @@
 main {
+  --h1-font-size: 1.5em;
+  --main-font-size: 1em;
+  display: flex;
+  align-items: center;
   flex-grow: 1;
   position: relative;
-  margin: 1em 1em $footer-height 1em;
-  padding: 0 10px;
-  border-radius: 50px;
-  background-color: var(--bg-main);
+  margin-bottom: $footer-height;
+  //background-color: var(--bg-form);
   color: var(--text);
 
   a {
+    $time: .2s;
     position: relative;
     margin: 0 auto;
     color: var(--text-a);
     font-weight: 500;
 
-    transition: color .3s linear;
+    transition: color $time linear;
 
     &:hover {
       --text-a: var(--text-a-hover);
@@ -31,24 +34,27 @@ main {
       left: 50%;
       bottom: 0;
       width: 0;
-      height: 1px;
+      height: 3px;
       background-color: var(--text-a);
 
-      transition: transitions(.3, left, width, background-color);
+      transition: transitions($time, left, width, background-color);
     }
+  }
+  @include mq([svga-w svga-h], [w h]) {
+    --h1-font-size: 2em;
+    --main-font-size: 1.8em;
   }
 }
 
 h2 {
   text-align: center;
-}
+  width: 80%;
+  margin: 0 auto;
 
-form {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  text-align: center;
-  transform: translate(-50%, -50%);
+  @include mq([svga-w svga-h], [w h]) {
+    width: 100%;
+    font-size: 5em;
+  }
 }
 
 input {
@@ -57,83 +63,56 @@ input {
 
   border: {
     style: solid;
-    size: 3em;
-    color: var(--bg);
+    width: .3em;
+    color: var(--border-input);
     radius: .5em;
   }
-  color: var(--text);
+  background-color: var(--bg-input);
+  color: var(--border-input);
   text-align: center;
   font-size: var(--main-font-size);
 
-  &:focus {
-    border-color: var(--text-a);
-    color: var(--text-a);
+  transition: transitions(.3, border-color, color);
+
+  .form &:focus {
+    --border-input: var(--text-ainput-hover);
+    --text-input: var(--text-input);
 
     & + label {
-      color: var(--text-a);
+      color: var(--text-input-hover);
+
+      transition: color $time linear;
     }
   }
 }
 
-label {
-  font-size: 2em;
-}
-
-button {
-  position: relative;
-  margin: .5em 0 0;
-  width: 5em;
-  height: 2em;
-  border: {
-    style: none;
-    size: 0em;
-    radius: .5em;
-  }
-  font-size: var(--main-font-size);
-  background-color: var(--bg-button);
-  color: var(--text);
-  font-weight: 900;
-  overflow: hidden;
-  cursor: pointer;
-
-  &::before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--bg-button-hover);
-    clip-path: circle(var(--button-circle, 0%) at 50% 50%);
-    pointer-events: none;
-
-    transition: clip-path .3s linear;
-  }
-
-  &:hover {
-    --button-circle: 100%;
-    color: var(--text-button-hover);
-  }
-
-  &::after {
-    content: "Calcular";
-    position: relative;
-    z-index: 2;
-    color: var(--text-button-hover);
-    pointer-events: none;
-  }
-}
-
-.index {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.form {
+  //*
   text-align: center;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1em;
+  border-radius: 50px;
+  background-color: var(--bg-form);
+    /*
+    --main-font-size: 2em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    //*/
 
-  p {
-    margin: .5em;
+  @include mq(600) {
+    width: 50%;
   }
+}
+
+label {
+  font: {
+    size:var(--main-font-size);
+    weight: 500;
+  }
+  color: var(--border-input);
 }
 
 .row {
@@ -143,16 +122,28 @@ button {
 }
 
 .result {
-  font-size: var(--main-font-size);
+  border: none;
+  font: {
+    family: monospace;
+    size: var(--main-font-size);
+  }
+  background-color: transparent;
 }
 
-.close {
-  position: absolute;
-  top: 1em;
-  right: 1em;
-  width: $icon-width;
-  &-color {
-    fill: var(--bg-main);
-    cursor: pointer;
+.button-div {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: end;
+}
+
+.copy {
+  display: inline-block;
+  width: 48px;
+  aspect-ratio: 1;
+  padding: 5px;
+  z-index: 5;
+
+  @include mq([svga-w svga-h], [w h]) {
+    width: 62px;
   }
 }

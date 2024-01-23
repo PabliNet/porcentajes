@@ -1,56 +1,56 @@
-$bg: aquamarine;
-$bg-button: mediumaquamarine;
-$bg-button-hover: $bg;
+$color: hsl(160deg, 100, 75);
 
-$logo-fill: $bg;
-$logo-stroke: darken($bg, 40%);
+$light: (
+  bg: $color,
+  bg-button: $color,
+  bg-button-hover: adjust-color($color, $saturation: -49, $lightness: -15%),
+  bg-checked: white,
+  bg-input: transparent,
+  bg-form: lighten($color, 12%),
+  bg-nav: adjust-color($color, $lightness: -25%),
+  bg-nav-a-hover: adjust-color($color, $lightness: 5%),
+  border-input: adjust-color($color, $saturation: -49, $lightness: -25%),
+  logo-stroke: darken($color, 40%),
+  logo-stroke-hover: adjust-color($color, $lightness: -50%),
+  text: dimgray,
+  text-a: adjust-color($color, $saturation: -49, $lightness: -45%),
+  text-a-hover: adjust-color($color, $saturation: -49, $lightness: -45%),
+  text-checked: adjust-color($color, $lightness: -30%),
+  text-input-hover: black,
+  text-button: darken($color, 40%),
+  text-button-hover: darken($color, 40%),
+  text-header: darken($color, 40%)
+);
 
-$text: black;
-$text-a: darkgreen;
-$text-a-hover: teal;
-$text-button: #{darken($bg, 40%)};
-$text-header: #{darken($bg, 40%)};
+$bg: black;
+$dark: (
+  bg: $bg,
+  bg-button: $color,
+  bg-button-hover: adjust-color($color, $saturation: -49, $lightness: -15%),
+  bg-checked: $color,
+  bg-input: rgba($color, .4),
+  bg-form: $bg,
+  bg-nav: adjust-color($color, $lightness: -65%),
+  bg-nav-a-hover: adjust-color($color, $lightness: 25%),
+  border-input: adjust-color($color, $saturation: -49, $lightness: -25%),
+  logo-stroke: darken($color, 40%),
+  logo-stroke-hover: adjust-color($color, $lightness: -50%),
+  text: lightgray,
+  text-a: white,
+  text-a-hover: black,
+  text-checked: adjust-color($color, $lightness: -50%),
+  text-input-hover: white,
+  text-button: darken($color, 40%),
+  text-button-hover: darken($color, 40%),
+  text-header: darken($color, 40%)
+);
 
 :root {
-  --bg: #{$bg};
-  --bg-main: #{lighten($bg, 12%)};
-  --bg-button: #{$bg-button};
-  --bg-button-hover: #{$bg-button-hover};
-  --bg-button-active: ;
-  --bg-menu-a: ;
-  --bg-menu-a-hover: ;
-  --bg-nav: #{$bg};
+  @include colors($light);
 
-  --logo-fill: #{$bg};
-  --logo-stroke: #{$logo-stroke};
-
-  --text: #{$text};
-  --text-a: #{$text-a};
-  --text-a-hover: #{$text-a-hover};
-  --text-button: #{$text-button};
-  --text-button-hover: black;
-  --text-header: #{$text-header};
-
-  @include mq(dark, prefers-color-scheme) {
-/*
-    --bg: ;
-    --bg-main: ;
-    --bg-button: ;
-    --bg-button-hover: ;
-    --bg-button-active: ;
-    --bg-menu-a: ;
-    --bg-menu-a-hover: ;
-    --bg-nav: ;
-
-    --logo-fill: green;
-    --logo-stroke: white;
-  
-    --text: ;
-    --text-a: ;
-    --text-a-hover: ;
-    --text-button: ;
-    --text-button-hover: ;
-    --text-header: ;
+  @include mq(dark) {
+    //*
+    @include colors($dark);
     //*/
   }
 }

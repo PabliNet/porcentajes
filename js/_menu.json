@@ -1,37 +1,51 @@
 [
   {
-    "href": "percent.html",
+    "id": "percent",
     "name": "Porcentaje de un total",
-    "description": "Calcula el porcentaje de un número"
+    "description": "Calcula el porcentaje de un número",
+    "label1": "Cantidad",
+    "label2": "Total"
   },
   {
-    "href": "quantity.html",
+    "id": "quantity",
     "name": "Cantidad según porcentaje",
-    "description": "Calcula la cantidad según el porcentaje"
+    "description": "Calcula la cantidad según el porcentaje",
+    "label1": "Procentaje",
+    "label2": "Total"
   },
   {
-    "href": "add-percent.html",
+    "id": "add-percent",
     "name": "Sumar porcentaje",
-    "description": "Suma el porcentaje agregado"
+    "description": "Suma el porcentaje agregado",
+    "label1": "Procentaje a sumar",
+    "label2": "Total"
   },
   {
-    "href": "subtract-percent.html",
+    "id": "subtract-percent",
     "name": "Restar porcentaje",
-    "description": "Resta un porcentaje"
+    "description": "Resta un porcentaje",
+    "label1": "Total",
+    "label2": "Procentaje"
   },
   {
-    "href": "subtract-added-percent.html",
+    "id": "subtract-added-percent",
     "name": "Restar porcentaje agregado",
-    "description": "Resta el porcentaje agregado"
+    "description": "Resta el porcentaje agregado",
+    "label1": "Total",
+    "label2": "Procentaje agregado a restar"
   },
   {
-    "href": "increased-percent.html",
+    "id": "increased-percent",
     "name": "Porcentaje agregado",
-    "description": "Calcula el porcentaje agregado"
+    "description": "Calcula el porcentaje agregado",
+    "label1": "Total con agregado",
+    "label2": "Cantidad"
   },
   {
-    "href": "total.html",
+    "id": "total",
     "name": "Total",
-    "description": "Calcula el 100% según el porcentaje y el número"
+    "description": "Calcula el 100% según el porcentaje y el número",
+    "label1": "Cantidad",
+    "label2": "Procentaje"
   }
 ]

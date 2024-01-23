@@ -1,5 +1,9 @@
 input {
+  background-color: transparent;
   outline: none;
+  &[type="radio"] {
+    display: none;
+  }
   &[type="number"] {
     -moz-appearance: textfield;
     &::-webkit-outer-spin-button,

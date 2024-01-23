@@ -1,0 +1,37 @@
+@function conditions ($letter) {
+  @if ($letter == w) {
+    @return min-width;
+  } @else if ($letter == W) {
+    @return max-width;
+  } @else if ($letter == h) {
+    @return min-height;
+  } @else if ($letter == H) {
+    @return max-height;
+  } @else {
+    @return $letter;
+  }
+}
+
+@function breakpoints ($bp) {
+  $breakpoints: (
+    qvga-w: 320px,
+    qvga-h: 240px,
+    sd-w: 640px,
+    sd-h: 480px,
+    svga-w: 800px,
+    svga-h: 600px,
+    xga-w: 1024px,
+    xga-h: 768
+  );
+  @if map-has-key($breakpoints, $bp) {
+    @return map-get($breakpoints, $bp);
+  } @else if type-of($bp) == number {
+    @if index([px em rem null], unit($bp)) {
+      @return $bp;
+    } @else if unit($bp) == "" {
+      @return $bp * 1px
+    }
+  } @else {
+    @return $bp;
+  }
+}

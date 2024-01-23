@@ -1,23 +1,20 @@
+//import { optionsCheck } from "/js/_options.js";
 export const numberics = e => {
-if (e.target.tagName == 'INPUT') {
-    switch (e.target.id) {
-      case 'n-quantity':
-        document.getElementById('quantity-span').textContent = document.getElementById('n-quantity').value
-      break
-
-      case 'n-percent':
-        document.getElementById('percent-span').textContent = document.getElementById('n-percent').value
-      break
-
-      case 'n-total':
-        document.getElementById('total-span').textContent = document.getElementById('n-total').value
-      break
+  if (/[0-9.]/.exec(e.key)) {
+    if (e.target.classList.contains('err')) {
+      e.target.classList.remove('err')
     }
   }
+  /*
+  if (optionsCheck() != 'increased-percent' && /input-[1-2]/.exec(e.target.id)) {
+    document.getElementById(`${e.target.id}-span`).textContent = document.getElementById(e.target.id).value
+  }
+  //*/
 }
 
-
+//*
 export const arrows = e => {
   if (e.target.type == 'number' && (e.key === 'ArrowUp' || e.key === 'ArrowDown')) {
     e.preventDefault();
 }}
+//*/

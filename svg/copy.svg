@@ -1,0 +1,23 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50 100 100" class="copy">
+
+  <defs>
+    <style>
+      .copy {
+        fill: var(--copy-fill, var(--bg-form, #FFF));
+        stroke: var(--copy-stroke, var(--logo-stroke, #000));
+      }
+    </style>
+    <g id="copy">
+      <g id="page">
+        <path d="M-15 -15 a5 5 0 0 1 5 -5 h15 a5 5 0 0 1 5 5 v25 a5 5 0 0 1 -5 5 h-15 a5 5 0 0 1 -5 -5z" stroke-width="3" />
+        <path d="M-10 -10 h15" stroke-width="3" id="row" />
+        <use href="#row" x="0" y="8" />
+        <use href="#row" x="0" y="16" />
+      </g>
+        <circle cx="0" cy="0" r="45" stroke-width="10" />
+        <use href="#page" x="5" y="5" />
+        <use href="#page" x="-5" y="-5" />
+    </g>
+  </defs>
+  <use href="#copy" x="0" y="0" class="copy-colors under" />
+</svg>

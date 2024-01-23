@@ -1,24 +1,16 @@
 @mixin mq ($value, $condition:min-width) {
-  $breakpoints: (
-    small: 320px,
-    medium: 640px,
-    large: 1024px
-  );
-  @if index([min-width, max-width, min-height, max-height, prefers-color-scheme], $condition) {
-    @if map-has-key($breakpoints, $value) {
-      @media screen and (#{$condition}:map-get($breakpoints, $value)) {
+  @if type-of($value) == string or type-of($value) == number {
+    $condition: to-lower-case($condition);
+    $condition: conditions($condition);
+    @if not index([landscape portrait light dark], $value) and index([min-width max-width min-height max-height], $condition)  {
+      @media screen and (#{$condition}:breakpoints($value)) {
         @content;
       }
-    } @else if type-of($value) == number and (unit($value) == 'px' or unit($value) == 'rem') {
-      @media screen and (#{$condition}:$value) {
-        @content;
+    } @else if index([landscape portrait], $value) {
+        @media screen and (orientation:$value) {
+          @content;
       }
-    } @else if ($value == portrait or $value landscape) and $condition == orientation {
-      @media screen and (orientation:$value) {
-        @content;
-      }
-    }
-      @else if $value == light or $value == dark or $condition == prefers-color-scheme {
+    } @else if index([light dark], $value) {
       @media screen and (prefers-color-scheme:$value) {
         @content;
       }
@@ -27,5 +19,16 @@
         @content;
       }
     }
+  } @else if type-of($value) == list and type-of($condition) == list and length($value) == length($condition) and length($condition) == 2 {
+    $value1: nth($value, 1);
+    $value2: nth($value, 2);
+    $condition1: conditions(nth($condition, 1));
+    $condition2: conditions(nth($condition, 2));
+
+    @media screen and (#{$condition1}:breakpoints($value1)) and (#{$condition2}:breakpoints($value2)) {
+      @content
+    };
+  } @else if length($value) != length($condition) and length($condition) != 2 {
+    @error "Tiene que haber 2 resoluciones y dos condiciones, ej mq([svg-w svga-h], [w h]) {}"
   }
 }
