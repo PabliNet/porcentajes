@@ -1,10 +1,9 @@
-$footer-height: 5em;
+$footer-height: px(48);
 $icon-width: 45px;
-$header-height: 20px;
-$main-font-size: 5em;
+$form-font-size: 1px;
 $menu-width: 250px;
 $time: .3s;
 
 :root {
-  --main-font-size: #{$main-font-size};
+  --form-font-size: #{$form-font-size};
 }

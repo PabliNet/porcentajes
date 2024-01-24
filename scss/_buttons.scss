@@ -7,10 +7,13 @@ button {
     size: 0em;
     radius: .5em;
   }
-  font-size: 6vw;
+  font-size: px(20);
   background-color: var(--bg-button);
   color: var(--text);
-  font-weight: 900;
+  font: {
+    size: px(8);
+    weight: 900;
+  }
   overflow: hidden;
   cursor: pointer;
 
@@ -50,7 +53,7 @@ button {
   }
 
   @include mq([svga-w svga-h], [w h]) {
-    font-size: var(--h1-font-size);
+    font-size: px(12);
   }
 }
 

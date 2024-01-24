@@ -4,7 +4,7 @@
     <style>
       .logo {
         fill: transparent;
-        stroke: var(--logo-stroke, #000);
+        stroke: var(--logo-stroke, aquamarine);
       }
     </style>
     <g id="logo">

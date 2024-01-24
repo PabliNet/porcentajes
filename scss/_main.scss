@@ -1,6 +1,6 @@
 main {
-  --h1-font-size: 1.5em;
-  --main-font-size: 1em;
+  --h1-font-size: #{px(10)};
+  --form-font-size: #{px(10)};
   display: flex;
   align-items: center;
   flex-grow: 1;
@@ -40,9 +40,15 @@ main {
       transition: transitions($time, left, width, background-color);
     }
   }
+
   @include mq([svga-w svga-h], [w h]) {
-    --h1-font-size: 2em;
-    --main-font-size: 1.8em;
+    --h1-font-size: #{px(15)};
+    --form-font-size: #{px(15)};
+  }
+
+  @include mq((260 380), [w h]) {
+    --h1-font-size: #{px(12)};
+    --form-font-size: #{px(12)};
   }
 }
 
@@ -70,7 +76,7 @@ input {
   background-color: var(--bg-input);
   color: var(--border-input);
   text-align: center;
-  font-size: var(--main-font-size);
+  font-size: var(--form-font-size);
 
   transition: transitions(.3, border-color, color);
 
@@ -92,25 +98,32 @@ input {
   text-align: center;
   width: 100%;
   margin: 0 auto;
-  padding: 1em;
+  padding: 0 0 1em;
   border-radius: 50px;
   background-color: var(--bg-form);
     /*
-    --main-font-size: 2em;
+    --form-font-size: 2em;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     //*/
 
-  @include mq(600) {
+  @include mq(640) {
     width: 50%;
+    max-width: auto;
+  }
+
+  @include mq(380) {
+    padding: 0 0 1em;
+    width: 100%;
+    max-width: 320px;
   }
 }
 
 label {
   font: {
-    size:var(--main-font-size);
+    size:var(--form-font-size);
     weight: 500;
   }
   color: var(--border-input);
@@ -119,14 +132,19 @@ label {
 .row {
   display: flex;
   flex-direction: column-reverse;
-  padding-bottom: 1rem;
+  padding: 0 rpx(10) rpx(10);
+
+  @include mq(640) {
+    width: 100%;
+    padding-bottom: rpx(10);
+  }
 }
 
 .result {
   border: none;
   font: {
     family: monospace;
-    size: var(--main-font-size);
+    size: var(--form-font-size);
   }
   background-color: transparent;
   cursor: default;
