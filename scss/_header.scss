@@ -1,7 +1,28 @@
 h1 {
-  margin: 0 auto;
+  position: relative;
+  margin: 0 auto 1.5rem;
   line-height: 1.2;
   text-align: center;
   color: var(--text-header);
-  font-size: var(--h1-font-size);
+  font-size: 6vw;
+  user-select: none;
+  cursor: pointer;
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    aspect-ratio: 1;
+    background-color: var(--logo-stroke);
+    clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+    pointer-events: none;
+    transform: scale(.5);
+  }
+
+  @include mq(380) {
+    font-size: var(--h1-font-size);
+  }
 }

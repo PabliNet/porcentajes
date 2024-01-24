@@ -1,4 +1,4 @@
-nav {
+.menu {
   position: fixed;
   bottom: $footer-height;
   z-index: 2;
@@ -27,10 +27,11 @@ nav {
     color: var(--text-a);
     cursor: pointer;
 
-    transition: transitions(.3, background-color, padding-left);
+    transition: transitions(.3, background-color, color, padding-left);
 
     &:hover {
       background-color: var(--bg-nav-a-hover);
+      color: var(--text-nav-a-hover);
       padding-left: 2em;
     }
   }
@@ -38,5 +39,44 @@ nav {
   input[type="radio"]:checked + label {
     background-color: var(--bg-checked);
     color: var(--text-checked);
+  }
+}
+
+.select {
+  position: absolute;
+  left: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font: {
+    size: 1.6rem;
+    weight: 700;
+  }
+  background-color: var(--bg-form);
+  transform: scale(1, 0) {
+    origin: top center;
+  };
+  cursor: pointer;
+
+  transition: transitions(.3, transform);
+
+  &-show {
+    transform: scale(1, 1);
+  }
+
+  label {
+    display: block;
+
+    transition: transitions(.3, background-color, color);
+
+    &:hover {
+    background-color: var(--bg-nav-a-hover);
+    color: var(--text-nav-a-hover);
+    }
+  }
+
+  input[type="radio"]:checked + label {
+    display: none;
   }
 }

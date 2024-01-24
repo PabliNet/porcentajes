@@ -7,7 +7,7 @@ button {
     size: 0em;
     radius: .5em;
   }
-  font-size: var(--h1-font-size);
+  font-size: 6vw;
   background-color: var(--bg-button);
   color: var(--text);
   font-weight: 900;
@@ -48,17 +48,21 @@ button {
   &:nth-of-type(2)::after {
     content: "Borrar";
   }
+
+  @include mq([svga-w svga-h], [w h]) {
+    font-size: var(--h1-font-size);
+  }
 }
 
 .no-press {
-  filter: saturate(0) opacity(.1);
+  filter: saturate(0) opacity(.2);
   pointer-events: none;
 }
 
 .under {
   cursor: pointer;
 
-  transition: transform .1s linear;
+  transition: transitions(.3, stroke, transform);
 
   &-no {
     pointer-events: none;
@@ -69,6 +73,6 @@ button {
   }
 
   &:active {
-    transform: scale(.99);
+    transform: scale(.95);
   }
 }

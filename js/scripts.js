@@ -7,6 +7,7 @@ import { createFooter, loadLogo } from "/js/_footer.js"
 import { loadCopy } from "/js/_copy.js"
 
 createMenu(links)
+createMenu(links, document.getElementById('h1'))
 result()
 createFooter()
 loadLogo('/svg/logo.svg')

@@ -88,6 +88,7 @@ input {
 
 .form {
   //*
+  position: relative;
   text-align: center;
   width: 100%;
   margin: 0 auto;
@@ -128,12 +129,14 @@ label {
     size: var(--main-font-size);
   }
   background-color: transparent;
+  cursor: default;
+  pointer-events: none;
 }
 
 .button-div {
   display: flex;
   justify-content: space-evenly;
-  align-items: end;
+  align-items: center;
 }
 
 .copy {

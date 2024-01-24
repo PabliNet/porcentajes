@@ -1,48 +1,53 @@
-$color: hsl(160deg, 100, 75);
+$color: aquamarine;
 
 $light: (
   bg: $color,
   bg-button: $color,
-  bg-button-hover: adjust-color($color, $saturation: -49, $lightness: -15%),
-  bg-checked: white,
+  bg-button-hover: adjust-color($color, $saturation: -50%, $lightness: -15%),
+  bg-checked: black,
   bg-input: transparent,
   bg-form: lighten($color, 12%),
   bg-nav: adjust-color($color, $lightness: -25%),
   bg-nav-a-hover: adjust-color($color, $lightness: 5%),
-  border-input: adjust-color($color, $saturation: -49, $lightness: -25%),
+  bg-select: black,
+  border-input: adjust-color($color, $saturation: -49%, $lightness: -25%),
   logo-stroke: darken($color, 40%),
   logo-stroke-hover: adjust-color($color, $lightness: -50%),
   text: dimgray,
-  text-a: adjust-color($color, $saturation: -49, $lightness: -45%),
-  text-a-hover: adjust-color($color, $saturation: -49, $lightness: -45%),
-  text-checked: adjust-color($color, $lightness: -30%),
-  text-input-hover: black,
+  text-a: adjust-color($color, $saturation: -49%, $lightness: -45%),
+  text-a-hover: adjust-color($color, $saturation: -49%, $lightness: -45%),
   text-button: darken($color, 40%),
   text-button-hover: darken($color, 40%),
-  text-header: darken($color, 40%)
+  text-checked: adjust-color($color, $lightness: -30%),
+  text-header: darken($color, 40%),
+  text-input-hover: black,
+  text-nav-a-hover: adjust-color($color, $lightness: -50%)
 );
 
 $bg: black;
 $dark: (
   bg: $bg,
   bg-button: $color,
-  bg-button-hover: adjust-color($color, $saturation: -49, $lightness: -15%),
+  bg-button-hover: adjust-color($color, $saturation: -50%, $lightness: -15%),
   bg-checked: $color,
   bg-input: rgba($color, .4),
   bg-form: $bg,
   bg-nav: adjust-color($color, $lightness: -65%),
-  bg-nav-a-hover: adjust-color($color, $lightness: 25%),
-  border-input: adjust-color($color, $saturation: -49, $lightness: -25%),
+  bg-nav-a-hover: $color,
+  bg-select: #{$color},
+  border-input: adjust-color($color, $saturation: -49%, $lightness: -25%),
   logo-stroke: darken($color, 40%),
   logo-stroke-hover: adjust-color($color, $lightness: -50%),
   text: lightgray,
   text-a: white,
   text-a-hover: black,
-  text-checked: adjust-color($color, $lightness: -50%),
-  text-input-hover: white,
   text-button: darken($color, 40%),
   text-button-hover: darken($color, 40%),
-  text-header: darken($color, 40%)
+  text-checked: darken($color, 40%),
+  text-header: darken($color, 40%),
+  text-input-hover: white,
+  text-nav-a-hover: adjust-color($color, $lightness: -50%),
+  text-select: black
 );
 
 :root {
@@ -53,4 +58,14 @@ $dark: (
     @include colors($dark);
     //*/
   }
+}
+
+::selection {
+  background-color: var(--bg-select);
+  color: var(--text-select);
+}
+
+.err {
+  border-color: red;
+  color: red;
 }

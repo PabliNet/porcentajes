@@ -70,13 +70,19 @@ export const clic = e => {
     }
   }
   if (e.target.classList.contains('logo-colors')) {
-    document.querySelector('nav').classList.toggle('menu-show')
-  } else if (!['a', 'label', 'input'].includes(e.target.tagName.toLowerCase())) {
-    if (document.querySelector('nav').classList.contains('menu-show')) {
-      document.querySelector('nav').classList.remove('menu-show')
+    document.querySelector('body > nav').classList.toggle('menu-show')
+  } else {
+    if (document.querySelector('body > nav').classList.contains('menu-show')) {
+      document.querySelector('body > nav').classList.remove('menu-show')
     }
   }
-
+  if (['h1', 'h1-selected'].includes(e.target.id)) {
+    document.querySelector('.select').classList.toggle('select-show')
+  } else {
+    if (document.querySelector('.select').classList.contains('select-show')) {
+      document.querySelector('.select').classList.remove('select-show')
+    }
+  }
   if (e.target.id == 'remove') {
     document.querySelectorAll('.form input').forEach(el => {
       el.value = ''
@@ -88,7 +94,9 @@ export const clic = e => {
       document.getElementById('copy-span').classList.add('no-press')
     }
   }
-  copy(document.getElementById('result'))
+  if (e.target.getAttribute('href') == '#copy') {
+    copy(document.getElementById('result'))
+  }
 },
 //
 wheelScroll = e => {
