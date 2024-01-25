@@ -1,0 +1,10 @@
+#!/bin/bash
+[ $# -ne 1 ] && echo Se requiere un solo parámetro && exit 1
+mkdir -p $1/css
+for f in css/styles.css js svg favicon.ico index.html
+    do
+    #mkdir -p $1/css
+    [ -d $f ] && cp -r $f $1/$f
+    [ -f $f ] && cp $f $1/$f
+    echo Copiado: $1/$f
+done
